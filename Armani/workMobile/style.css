@@ -1,5 +1,6 @@
-.register.login {
-	max-width: 560px;
+.register.login,
+.register2.login2 {
+	width: 560px;
 }
 
 .en_US,
@@ -284,7 +285,7 @@ address {
 	font-size: 17px;
 	line-height: 26px;
 	color: #222;
-	padding: 11px 0;
+	padding: 11px 7px;
 	background: transparent;
 }
 
@@ -414,7 +415,7 @@ body {
 }
 
 .register2 {
-	max-width: 560px;
+	max-width: 680px;
 	min-width: 320px;
 	margin: 0 auto;
 	text-align: center;
@@ -540,6 +541,7 @@ button {
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 	padding: 12px 0;
+	background: none;
 	vertical-align: top;
 }
 
@@ -587,6 +589,7 @@ button {
 .register2.login2 .fm_register2 .inp2 + .inp2,
 .register2.login2 .register2.loginegister2 .inp2 + .inp2 {
 	margin-top: 12px;
+	background: transparent;
 }
 
 .inp2 {
@@ -615,20 +618,6 @@ button {
 	cursor: text;
 	white-space: nowrap;
 	text-overflow: ellipsis;
-}
-
-.register2 .fm_register2 .inp2 input {
-	outline-style: none;
-	width: 100%;
-	height: 47px;
-	border: 0 none;
-	font-size: 17px;
-	color: #222;
-	line-height: 32px;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-	padding: 12px 0;
-	vertical-align: top;
 }
 
 .register2 .fm_register2 .inp2 .btn_masking2 {
@@ -1007,4 +996,34 @@ address {
 	font-size: 12px;
 	color: #777;
 	text-align: center;
+}
+
+.register2 .fm_register2 .inp2 .btn_masking2 {
+	position: absolute;
+	top: 8px;
+	right: 0;
+	padding: 4px;
+	background: #fff;
+	border: 0;
+}
+
+.register2 .fm_register2 .inp2 .btn_masking2.checked2:before {
+	background-position: -354px -277px;
+}
+
+.register2 .fm_register2 .inp2 .btn_masking2:before {
+	content: '';
+	background-image: url(https://static.worksmobile.net/static/pwe/wm/common/sp_join_6383c284.png);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(transparent), to(transparent)), url(https://static.worksmobile.net/static/pwe/wm/common/sp_join_0647b21d.svg);
+	background-image: linear-gradient(transparent, transparent), url(https://static.worksmobile.net/static/pwe/wm/common/sp_join_0647b21d.svg);
+	background-size: 456px 405px;
+	background-position: -160px -351px;
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+}
+
+.register2.login2 .fm_register2 .inp_wrap2 input,
+.register2.login2 .register2.loginegister2 .inp_wrap2 input {
+	line-height: 21px;
 }
